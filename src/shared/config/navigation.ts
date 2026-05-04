@@ -1,34 +1,27 @@
-export type NavHref =
-  | "/"
-  | "/files"
-  | "/shared"
-  | "/favorite"
-  | "/files-from-email";
+export const ROUTES = {
+  home: "/",
+  files: "/files",
+  shared: "/shared",
+  favorite: "/favorite",
+  filesFromEmail: "/files-from-email",
+  file: (id: string) => `/files/${id}`,
+} as const;
 
-export type NavItem = {
-  label: string;
-  href: NavHref;
-};
-
-export const navItems: NavItem[] = [
+export const navItems = [
   {
     label: "🏠 Главная",
-    href: "/",
+    href: ROUTES.home,
   },
   {
     label: "📁 Мои файлы",
-    href: "/files",
+    href: ROUTES.files,
   },
-  // {
-  //   label: "🔗 Доступные",
-  //   href: "/shared",
-  // },
   {
     label: "📧 Файлы из почты",
-    href: "/files-from-email",
+    href: ROUTES.filesFromEmail,
   },
   {
     label: "⭐ Избранные",
-    href: "/favorite",
+    href: ROUTES.favorite,
   },
 ];

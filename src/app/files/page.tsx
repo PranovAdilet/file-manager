@@ -1,5 +1,3 @@
-const FilesPage = () => {
-  return <div>FilesPage</div>;
-};
-
-export default FilesPage;
+export default function FilesPage() {
+  return <div>files</div>;
+}

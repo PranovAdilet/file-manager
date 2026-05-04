@@ -11,5 +11,5 @@ export type File = {
   createdAt?: number;
   updatedAt?: number;
 
-  children?: File[];
+  parentId: string | null;
 };

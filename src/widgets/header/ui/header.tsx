@@ -16,7 +16,7 @@ export const ThemeSwitch = dynamic(
 
 export const Header = () => {
   return (
-    <div className="h-20 flex items-center justify-between shrink-0 border-b border-border px-4">
+    <header className="h-20 flex items-center justify-between shrink-0 border-b border-border px-4">
       <h1 className="text-base font-medium">File Manager</h1>
       <div className="flex items-center gap-6">
         <ThemeSwitch />
@@ -27,6 +27,6 @@ export const Header = () => {
           <Input placeholder="Search" />
         </div>
       </div>
-    </div>
+    </header>
   );
 };

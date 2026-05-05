@@ -1,20 +1,19 @@
-"use client";
-
-import { useParams } from "next/navigation";
 import { ArrowUpFromLine, FilesIcon } from "lucide-react";
-import { Breadcrumbs, createBreadcrumbs } from "@/features/breadcrumbs";
+import { Breadcrumbs } from "@/features/breadcrumbs";
 import { Button } from "@/shared/ui";
-import { filesMock } from "./files-explorer";
+import { File } from "@/entities/file";
 
-export const FilesHeader = () => {
-  const params = useParams<{ folderId: string }>();
-  const currentId = params.folderId;
-  const data = createBreadcrumbs(filesMock, currentId);
+type Props = {
+  breadcrumbs?: File[];
+};
+
+export const FilesHeader = ({ breadcrumbs = [] }: Props) => {
+  const hasBreadcrumbs = breadcrumbs.length > 0;
 
   return (
     <div className="flex justify-between items-center w-full">
-      {currentId ? (
-        <Breadcrumbs items={data} />
+      {hasBreadcrumbs ? (
+        <Breadcrumbs items={breadcrumbs} />
       ) : (
         <div className="flex items-center gap-3">
           <FilesIcon size="33" />

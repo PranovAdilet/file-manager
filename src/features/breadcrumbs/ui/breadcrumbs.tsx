@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/shared/lib";
-import { File } from "@/entities/file-card";
+import { File } from "@/entities/file";
 
 export const Breadcrumbs = ({ items }: { items: File[] }) => {
   const activeId = items.at(-1)?.id;

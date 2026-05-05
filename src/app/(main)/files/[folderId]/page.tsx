@@ -1,14 +1,24 @@
-import { FilesExplorer } from "@/widgets/files-view";
-import { use } from "react";
+import { getFileAncestors, getFiles } from "@/entities/file";
+import { FilesExplorer, FilesHeader } from "@/widgets/files-view";
 
 type Props = {
   params: Promise<{ folderId: string }>;
 };
 
-const FolderPage = ({ params }: Props) => {
-  const { folderId } = use(params);
+const FolderPage = async ({ params }: Props) => {
+  const { folderId } = await params;
 
-  return <FilesExplorer id={folderId} />;
+  const [files, breadcrumbs] = await Promise.all([
+    getFiles({ parentId: folderId }),
+    getFileAncestors(folderId),
+  ]);
+
+  return (
+    <>
+      <FilesHeader breadcrumbs={breadcrumbs} />
+      <FilesExplorer id={folderId} intitialFiles={files} />
+    </>
+  );
 };
 
 export default FolderPage;

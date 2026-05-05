@@ -1,4 +1,4 @@
-import { File } from "@/entities/file-card";
+import { File } from "@/entities/file";
 
 export function createBreadcrumbs(
   files: File[],

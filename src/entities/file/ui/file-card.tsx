@@ -4,13 +4,15 @@ import { Share2, Star } from "lucide-react";
 import { File } from "../model/types";
 import { Button } from "@/shared/ui";
 import { fileIcons, formatFileName } from "../model/config";
+import { ReactNode } from "react";
 
 type Props = {
   file: File;
   onOpen: (file: File) => void;
+  favoriteButton: ReactNode;
 };
 
-export const FileCard = ({ file, onOpen }: Props) => {
+export const FileCard = ({ file, onOpen, favoriteButton }: Props) => {
   const iconMap = fileIcons[file.type] ?? fileIcons.txt;
   const Icon = iconMap.icon;
   const color = iconMap.color;
@@ -34,9 +36,7 @@ export const FileCard = ({ file, onOpen }: Props) => {
         <p className="text-foreground">{formatFileName(file)}</p>
       </div>
       <div className="flex gap-5">
-        <Button onClick={(e) => e.stopPropagation()} variant="ghost">
-          <Star size="20" />
-        </Button>
+        {favoriteButton}
         <Button onClick={(e) => e.stopPropagation()} variant="ghost">
           <Share2 size="20" />
         </Button>

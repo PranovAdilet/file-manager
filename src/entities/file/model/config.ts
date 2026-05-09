@@ -1,6 +1,6 @@
 import { ElementType } from "react";
 import { File, FileType } from "./types";
-import { Folder, FileText, FileCode } from "lucide-react";
+import { Folder, FileText, FileCode, Image, Video } from "lucide-react";
 
 type Icon = {
   icon: ElementType;
@@ -28,10 +28,23 @@ export const fileIcons: Record<FileType, Icon> = {
     icon: FileCode,
     color: "text-purple-400",
   },
+  image: {
+    icon: Image,
+    color: "",
+  },
+  video: {
+    icon: Video,
+    color: "",
+  },
 };
 
 export const formatFileName = (file: File) => {
-  if (file.type === "folder") return file.name;
-
-  return `${file.name}.${file.type}`;
+  switch (file.type) {
+    case "image":
+    case "video":
+    case "folder":
+      return file.name;
+    default:
+      return `${file.name}.${file.type}`;
+  }
 };

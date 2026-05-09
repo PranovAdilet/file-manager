@@ -1,5 +1,5 @@
 import { getFileAncestors, getFiles } from "@/entities/file";
-import { FilesExplorer, FilesHeader } from "@/widgets/files-view";
+import { FilesExplorer, FilesHeader } from "@/widgets/file";
 
 type Props = {
   params: Promise<{ folderId: string }>;

@@ -4,6 +4,7 @@ export const ROUTES = {
   shared: "/shared",
   favorite: "/favorite",
   filesFromEmail: "/files-from-email",
+  viewerById: (id: string) => `/viewer/${id}`,
   file: (id: string) => `/files/${id}`,
 } as const;
 
